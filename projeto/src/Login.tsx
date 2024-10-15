@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Button, FormControl, FormLabel, Input, Heading, Text } from "@chakra-ui/react";
 
 const Login = () => {
