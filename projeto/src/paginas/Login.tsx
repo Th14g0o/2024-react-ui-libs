@@ -9,7 +9,12 @@ const Login = () => {
         </Heading>
         <FormControl mt={5} display="flex" justifyContent="center" alignItems="center" id="name">
           <FormLabel bg="blue.400" color="white" borderRadius={0} m={0} p={2}>Nome</FormLabel>
-          <Input type="text" placeholder="Digite seu usuario aqui..." p={0} pl={2} py={2}  borderRadius="0px" />
+          <Input name="titulo" type="text" placeholder="Digite seu usuario aqui..." p={0} pl={2} py={2}  borderRadius="0px" />
+        </FormControl>
+
+        <FormControl mt={5} display="flex" justifyContent="center" alignItems="center" id="name">
+          <FormLabel bg="blue.400" color="white" borderRadius={0} m={0} p={2}>Senha</FormLabel>
+          <Input name="desc" type="text" placeholder="Digite sua senha aqui..." p={0} pl={2} py={2}  borderRadius="0px" />
         </FormControl>
         
         <Box display="flex" justifyContent="center" alignItems="center">
