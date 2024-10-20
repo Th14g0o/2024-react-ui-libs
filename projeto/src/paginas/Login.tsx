@@ -10,6 +10,16 @@ import { ViewIcon, ViewOffIcon  } from '@chakra-ui/icons'
 const Login = () => {
   const navegador = useNavigate();
 
+  const [usuarioEntrar, setusuarioEntrar] = useState<string>("");
+  const [senhaEntrar, setSenhaEntrar] = useState<string>("");
+  const aoMudarUsuarioEntrar = (evento: React.ChangeEvent<HTMLInputElement>) => {
+    setusuarioEntrar(evento.target.value);
+  }
+  const aoMudarSenhaEntrar = (evento: React.ChangeEvent<HTMLInputElement>) => {
+    setSenhaEntrar(evento.target.value);
+  }
+
+
   const [exibirSenhaEntrar, setExibirSenhaEntrar] = useState<boolean>(false);
   const exibeSenhaEntrar = () => setExibirSenhaEntrar(!exibirSenhaEntrar);
 
@@ -21,6 +31,7 @@ const Login = () => {
 
   const [senhaCriada, setSenhaCriada] = useState<string>("");
   const [senhaCriadaConfirma, setSenhaCriadaConfirma] = useState<string>("");
+  const [usuarioCriado, setusuarioCriado] = useState<string>("");
 
   const aoMudarSenha = (evento: React.ChangeEvent<HTMLInputElement>) => {
     setSenhaCriada(evento.target.value);
@@ -28,22 +39,47 @@ const Login = () => {
   const aoMudarSenhaConfimacao = (evento: React.ChangeEvent<HTMLInputElement>) => {
     setSenhaCriadaConfirma(evento.target.value);
   }
+  const aoMudarUsuario = (evento: React.ChangeEvent<HTMLInputElement>) => {
+    setusuarioCriado(evento.target.value);
+  }
 
   const aviso = useToast();
 
   const entrarEnviar = () => {
-    navegador('lista/');
+    let erro = false;
+
+    if (!usuarioEntrar) {
+      aviso({
+        position: 'top',
+        title: "Usuario invalido.",
+        status: "warning",
+        isClosable: true,
+      })
+      erro = true;
+    };
+
+    if (!senhaEntrar) {
+      aviso({
+        position: 'top',
+        title: "Senha invalida.",
+        status: "warning",
+        isClosable: true,
+      })
+      erro = true;
+    };
+
+    if(!erro) navegador('lista/');
   }
   const criarEnviar = () => {
     let erro = false;
 
-    if (senhaCriada.length < 1) {
+    if (!usuarioCriado) {
       aviso({
         position: 'top',
-        title: "Tamanho da senha Invalido.",
+        title: "Usuario invalido.",
         status: "warning",
         isClosable: true,
-      });
+      })
       erro = true;
     };
 
@@ -54,6 +90,16 @@ const Login = () => {
         status: "warning",
         isClosable: true,
       })
+      erro = true;
+    };
+
+    if (senhaCriada.length < 1) {
+      aviso({
+        position: 'top',
+        title: "Tamanho da senha Invalido.",
+        status: "warning",
+        isClosable: true,
+      });
       erro = true;
     };
     
@@ -80,12 +126,12 @@ const Login = () => {
             <TabPanel>
               <FormControl mt={2} display="flex" justifyContent="center" alignItems="center">
                 <FormLabel bg="blue.400" color="white" borderRadius={0} m={0} p={2}>Nome</FormLabel>
-                <Input type="text" placeholder="Digite seu usuario aqui..." p={0} pl={2} py={2} borderRadius="0px" id="usuarioEntrar" name="usuarioEntrar"/>
+                <Input value={usuarioEntrar} onChange={aoMudarUsuarioEntrar} type="text" placeholder="Digite seu usuario aqui..." p={0} pl={2} py={2} borderRadius="0px" id="usuarioEntrar" name="usuarioEntrar"/>
               </FormControl>
 
               <FormControl mt={5} display="flex" justifyContent="center" alignItems="center">
                 <FormLabel bg="blue.400" color="white" borderRadius={0} m={0} p={2}>Senha</FormLabel>
-                <Input type={!exibirSenhaEntrar ? 'password' : 'text'} placeholder="Digite sua senha aqui..." p={0} pl={2} py={2} borderRadius="0px" id="senhaEntrar" name="senhaEntrar"/>
+                <Input value={senhaEntrar} onChange={aoMudarSenhaEntrar} type={!exibirSenhaEntrar ? 'password' : 'text'} placeholder="Digite sua senha aqui..." p={0} pl={2} py={2} borderRadius="0px" id="senhaEntrar" name="senhaEntrar"/>
                 <IconButton onClick={exibeSenhaEntrar} rounded="0" bg="blue.400" _hover={{ bg: 'blue.500' }} color='white' aria-label='Search database' icon={exibirSenhaEntrar ? <ViewOffIcon /> : <ViewIcon />} />
               </FormControl>
 
@@ -98,7 +144,7 @@ const Login = () => {
             <TabPanel>
               <FormControl mt={2} display="flex" justifyContent="center" alignItems="center">
                 <FormLabel bg="blue.400" color="white" borderRadius={0} m={0} p={2}>Nome</FormLabel>
-                <Input type="text" placeholder="Digite seu usuario aqui..." p={0} pl={2} py={2} borderRadius="0px" id="usuarioCriar" name='usuarioCriar'/>
+                <Input value={usuarioCriado} onChange={aoMudarUsuario} type="text" placeholder="Digite seu usuario aqui..." p={0} pl={2} py={2} borderRadius="0px" id="usuarioCriar" name='usuarioCriar'/>
               </FormControl>
 
               <FormControl  mt={5} display="flex" justifyContent="center" alignItems="center">
