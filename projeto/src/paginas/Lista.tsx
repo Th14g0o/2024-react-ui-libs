@@ -230,7 +230,7 @@ const Lista = () => {
                 </Menu>
             </Box>
 
-            <Box bg="white" p={6} px={10} rounded="md" shadow="md" width="90%">
+            <Box bg="white" p={6} px={10} rounded="md" shadow="md" width="1200px">
                 <Heading as="h1" size="lg" width="100%" textAlign="center" >
                     Lista de tarefas
                 </Heading>

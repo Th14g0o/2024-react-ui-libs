@@ -108,7 +108,7 @@ const Login = () => {
 
   return (
     <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" bg="gray.100">
-      <Box bg="white" p={6} rounded="md" shadow="md" width="40%" >
+      <Box bg="white" p={6} rounded="md" shadow="md" width="590px" >
         <Tabs size='md'>
           <TabList >
             <Tab>
