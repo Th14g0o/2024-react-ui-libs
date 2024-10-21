@@ -206,7 +206,7 @@ const Lista = () => {
             const novaPorcentagem = totalTarefas > 0 ? Math.trunc((concluidas / totalTarefas) * 100) : 0;
             setPorcentagemConcluida(novaPorcentagem);
         }
-    }, );
+    }, []);
 
     return (
         <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" bg="gray.100" >
