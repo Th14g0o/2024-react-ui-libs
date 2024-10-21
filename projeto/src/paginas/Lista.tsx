@@ -4,7 +4,7 @@ import {
     Box, Heading, Text, IconButton, FormLabel, FormControl, Input, Stack, ButtonGroup, Button, Textarea, Checkbox,
     Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel,
     Menu, MenuButton, MenuList, MenuItem,
-    CircularProgress, CircularProgressLabel,
+    CircularProgress,
     Popover, PopoverTrigger, FocusLock, PopoverContent, useDisclosure,
     AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter,
     useToast
