@@ -148,11 +148,27 @@ const Lista = () => {
     }
 
     const atualizarTarefa = (idTarefa: number, novoTitulo: string, novaDescricao: string, novoEhFinalizado : boolean) => {
-        setTarefas(tarefas.map(tarefa =>
-            tarefa.idTarefa == idTarefa
-                ? { ...tarefa, titulo: novoTitulo, descricao: novaDescricao, ehFinalizado: novoEhFinalizado,  dtAlterado: new Date().toLocaleString(), }
-                : tarefa
-        ));
+        if (novoTitulo){
+            setTarefas(tarefas.map(tarefa =>
+                tarefa.idTarefa == idTarefa
+                    ? { ...tarefa, titulo: novoTitulo, descricao: novaDescricao, ehFinalizado: novoEhFinalizado,  dtAlterado: new Date().toLocaleString(), }
+                    : tarefa
+            ));
+            aviso({
+                position: 'top',
+                title: "Tarefa atualizada com sucesso.",
+                status: "success",
+                isClosable: true,
+            });
+        }
+        else{
+            aviso({
+                position: 'top',
+                title: "Uma tarefa precisa ter titulo.",
+                status: "warning",
+                isClosable: true,
+              });
+        }
     };
     const excluirTarefa = (idTarefa: number) => {
         setTarefas(tarefas.filter(tarefa => tarefa.idTarefa !== idTarefa));
@@ -181,12 +197,18 @@ const Lista = () => {
                 );
                 elementoTitulo.value = "";
                 elementoDesc.value = "";
+                aviso({
+                    position: 'top',
+                    title: "Tarefa criada com sucesso.",
+                    status: "success",
+                    isClosable: true,
+                });
             }
         }
         else{
             aviso({
                 position: 'top',
-                title: "Um tarefa precisa ter titulo",
+                title: "Uma tarefa precisa ter titulo.",
                 status: "warning",
                 isClosable: true,
               });
