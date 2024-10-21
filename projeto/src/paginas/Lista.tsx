@@ -4,7 +4,7 @@ import {
     Box, Heading, Text, IconButton, FormLabel, FormControl, Input, Stack, ButtonGroup, Button, Textarea, Checkbox,
     Accordion, AccordionItem, AccordionButton, AccordionIcon, AccordionPanel,
     Menu, MenuButton, MenuList, MenuItem,
-    CircularProgress,
+    CircularProgress, CircularProgressLabel,
     Popover, PopoverTrigger, FocusLock, PopoverContent, useDisclosure,
     AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter,
     useToast
@@ -232,7 +232,7 @@ const Lista = () => {
                 <Text color="blue.200" as="h2" size="lg" width="100%" textAlign="center" mb={10}>Bem vindo Usuario</Text>
                 <Box display="flex" mb={10} alignItems="center" justifyContent="center">
                     <CircularProgress size='120px' value={porcentagemConcluida} color='blue.200'>
-                        { porcentagemConcluida.toString() + "%" }  
+                         { (<CircularProgressLabel> { porcentagemConcluida.toString() + "%" }  </CircularProgressLabel>) }
                     </CircularProgress>
                 </Box>
                 <Box display="flex" mb={1} alignItems="center" justifyContent="center" >
