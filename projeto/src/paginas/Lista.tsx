@@ -193,11 +193,9 @@ const Lista = () => {
         }
     }
 
-    const [qtdTarefasConcluidas, atualizarQtdTarefasConcluidas] = useState(0);
     const [porcentagemConcluida, setPorcentagemConcluida] = useState(0);
     useEffect(() => {
         let concluidas = tarefas.filter((tarefa: Tarefa) => tarefa.ehFinalizado).length;
-        atualizarQtdTarefasConcluidas(concluidas);
         const totalTarefas = tarefas.length;
         const novaPorcentagem = totalTarefas > 0 ? Math.trunc((concluidas / totalTarefas) * 100) : 0;
         setPorcentagemConcluida(novaPorcentagem);
