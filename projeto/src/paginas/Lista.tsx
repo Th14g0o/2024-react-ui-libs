@@ -197,9 +197,11 @@ const Lista = () => {
     useEffect(() => {
         let concluidas = tarefas.filter((tarefa: Tarefa) => tarefa.ehFinalizado).length;
         const totalTarefas = tarefas.length;
-        const novaPorcentagem = totalTarefas > 0 ? Math.trunc((concluidas / totalTarefas) * 100) : 0;
-        setPorcentagemConcluida(novaPorcentagem);
-    }, []);
+        if (totalTarefas > 0){ 
+            const novaPorcentagem = totalTarefas > 0 ? Math.trunc((concluidas / totalTarefas) * 100) : 0;
+            setPorcentagemConcluida(novaPorcentagem);
+        }
+    },);
 
     return (
         <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" bg="gray.100" >
